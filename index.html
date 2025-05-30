@@ -3,127 +3,231 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - 김지민</title>
-  <link href="output.css" rel="stylesheet">
+  <title>3번 포트폴리오 풀스크린</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      cursor: url('cursor.cur'), auto;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+      scroll-behavior: smooth;
+      overflow: hidden;
+      background: black;
+    }
+    main {
+      height: 100%;
+      width: 100%;
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+    }
+    section {
+      height: 100vh;
+      width: 100%;
+      scroll-snap-align: start;
+      display: flex;
+      position: relative;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .intro {
+      background: linear-gradient(135deg, #9d75eb, #f5d776, #60bfc1);
+      background-size: 300% 300%;
+      animation: gradientShift 10s ease infinite;
+      position: relative;
+    }
+
+    .menu-left {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      background: #2a1a1f;
+      color: white;
+      padding: 20px;
+      font-weight: bold;
+      text-align: center;
+      width: 60px;
+      transition: width 0.5s ease;
+      z-index: 10;
+    }
+    .menu-left:hover {
+      width: 60%;
+    }
+
+    .content-box {
+      background: white;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .content-box h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: black;
+      animation: blink 1s steps(2, start) infinite;
+      vertical-align: bottom;
+      margin-left: 5px;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    .content-box p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .name-label {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .name-label strong {
+      font-weight: bold;
+    }
+
+    .portfolio-box {
+      display: inline-block;
+      background: black;
+      color: white;
+      padding: 0 10px;
+    }
+
+    .image-area {
+      width: 50%;
+      background: url('https://via.placeholder.com/600x800') no-repeat center;
+      background-size: cover;
+    }
+
+    .dot-nav {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .dot-nav span {
+      width: 10px;
+      height: 10px;
+      background: black;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .intro-label {
+      position: absolute;
+      top: 20px;
+      left: 80px;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 1rem;
+      z-index: 20;
+    }
+
+    .intro-label::after {
+      content: "";
+      display: block;
+      width: 100px;
+      height: 1px;
+      background: black;
+      margin-left: 10px;
+    }
+
+    .about {
+      background: #f5f5f5;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .projects {
+      background: #ffffff;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contact {
+      background: #111111;
+      color: white;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
 </head>
-<body class="font-sans text-gray-900">
-  <!-- Header -->
-  <header class="flex justify-between items-center p-4">
-    <div class="text-sm">Seoul, Korea <span id="local-time"></span></div>
-    <nav class="space-x-4 text-sm">
-      <a href="#work" class="hover:underline">Work</a>
-      <a href="#contact" class="hover:underline">Contact</a>
-    </nav>
-    <button class="text-sm">Menu</button>
-  </header>
+<body>
+  <main>
+    <section class="intro">
+      <div class="intro-label">Intro</div>
 
-  <!-- Hero Video -->
-  <section class="h-screen bg-black flex items-center justify-center relative">
-    <video src="path/to/video.mp4" autoplay muted loop class="object-cover w-full h-full"></video>
-    <div class="absolute text-white text-center space-y-2">
-      <h1 class="text-4xl font-bold">김지민, Designer-Illustrator</h1>
-      <p class="text-lg">Featured Reel ‘24</p>
-    </div>
-  </section>
+      <div class="menu-left">
+        <div>MENU</div>
+      </div>
 
-  <!-- Visual Text -->
-  <section class="py-20 text-6xl font-bold text-center">
-    <p>I create memorable websites and better UX.</p>
-    <p>I create memorable websites and better UX.</p>
-  </section>
+      <div class="content-box">
+        <h1>
+          KIM<br>JIMIN<br>
+          <span class="portfolio-box">PORTFOLIO</span>
+        </h1>
+        <p>
+          안녕하세요. 미디어콘텐츠학과 <strong>김지민</strong>의 개인 포트폴리오 사이트입니다.<span class="cursor"></span>
+        </p>
 
-  <!-- About -->
-  <section class="py-16 px-4 max-w-3xl mx-auto">
-    <h2 class="text-3xl font-semibold mb-4">Flexible Adaptable Versatile Developer</h2>
-    <p>저는 견고한 마크업을 바탕으로, 서비스에 멋진 UI와 인터랙션을 구현하고 문제를 해결하여 사용자의 니즈를 충족시키는 것에서 보람을 느낍니다. 기억에 남아 오래 사용하고 싶은 플랫폼을 만드는 것, 그리고 개발을 통해 더 많은 사람들의 문제를 해결하는 것이 목표입니다.</p>
-  </section>
-
-  <!-- Tech Stack -->
-  <section class="py-16 bg-gray-100 px-4">
-    <h3 class="text-2xl font-semibold mb-4 text-center">사용 기술스택</h3>
-    <ul class="grid grid-cols-3 gap-4 max-w-md mx-auto list-disc list-inside">
-      <li>HTML</li>
-      <li>CSS</li>
-      <li>SASS/SCSS</li>
-      <li>Styled-components</li>
-      <li>Javascript(ES6+)</li>
-      <li>Typescript</li>
-      <li>JQuery</li>
-      <li>React.js</li>
-      <li>Next.js</li>
-      <li>Git</li>
-    </ul>
-  </section>
-
-  <!-- Projects -->
-  <section id="work" class="py-16 px-4 max-w-4xl mx-auto">
-    <h3 class="text-2xl font-semibold mb-6">대표 프로젝트</h3>
-    <div class="space-y-8">
-      <!-- Project Item -->
-      <div class="grid md:grid-cols-2 gap-4 items-center">
-        <img src="path/to/project1.jpg" alt="CYLNDR" class="w-full rounded shadow">
-        <div>
-          <h4 class="text-xl font-semibold">CYLNDR 인터랙티브 반응형 Web</h4>
-          <p class="mt-2">#퍼블리싱 100% #HTML #SCSS #JavaScript(ES6+) #GSAP</p>
-          <div class="mt-4 space-x-4">
-            <a href="#" class="underline">View Project →</a>
-            <a href="#" class="underline">Code Review →</a>
-          </div>
+        <div class="name-label">
+          KIM <strong>JIMIN</strong>
         </div>
       </div>
-      <!-- 추가 프로젝트 반복 -->
-    </div>
-  </section>
 
-  <!-- More Projects -->
-  <section class="py-16 bg-gray-100 px-4 max-w-4xl mx-auto">
-    <h3 class="text-2xl font-semibold mb-4">그 외 프로젝트</h3>
-    <ul class="space-y-4 list-disc list-inside">
-      <li>RebitX 상업용 부동산 조각투자 플랫폼 (Next.js, SCSS)</li>
-      <li>대아정보시스템 커스텀 웹사이트 (Next.js, JavaScript)</li>
-      <li>건명테크 기업 사이트 제작 (PHP, jQuery)</li>
-      <!-- 추가 항목 -->
-    </ul>
-  </section>
+      <div class="image-area"></div>
 
-  <!-- Blog -->
-  <section class="py-16 px-4 max-w-4xl mx-auto">
-    <h3 class="text-2xl font-semibold mb-4">Recent Posts</h3>
-    <ul class="space-y-2">
-      <li><a href="#" class="underline">2025-04-08 [JavaScript] use strict</a></li>
-      <li><a href="#" class="underline">2024-09-08 [Handlebars] handlebars 문법 정리</a></li>
-      <li><a href="#" class="underline">2024-08-18 [HTML, CSS] 다국어 대응</a></li>
-    </ul>
-  </section>
+      <div class="dot-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </section>
 
-  <!-- CTA Visual -->
-  <section class="py-20 bg-black text-white text-6xl font-bold text-center">
-    <p>Work with me if you're looking for a passionate & dedicated developer.</p>
-    <p>Work with me if you're looking for a passionate & dedicated developer.</p>
-  </section>
+    <section class="about">
+      <h2 style="font-size: 3rem; font-weight: bold;">About Me</h2>
+    </section>
 
-  <!-- Footer -->
-  <footer id="contact" class="py-8 px-4 text-center">
-    <p>© 김지민</p>
-    <p>your.email@example.com</p>
-    <div class="space-x-4 mt-2">
-      <a href="#" class="underline">Resume</a>
-      <a href="#" class="underline">Velog</a>
-      <a href="#" class="underline">Github</a>
-    </div>
-  </footer>
+    <section class="projects">
+      <h2 style="font-size: 3rem; font-weight: bold;">Projects</h2>
+    </section>
 
-  <script>
-    // Local time 업데이트
-    function updateTime() {
-      const now = new Date();
-      const h = now.getHours().toString().padStart(2, '0');
-      const m = now.getMinutes().toString().padStart(2, '0');
-      document.getElementById('local-time').textContent = `${h}:${m}`;
-    }
-    updateTime();
-    setInterval(updateTime, 60000);
-  </script>
+    <section class="contact">
+      <h2 style="font-size: 3rem; font-weight: bold;">Contact</h2>
+    </section>
+  </main>
 </body>
 </html>
-<link href="output.css" rel="stylesheet">
