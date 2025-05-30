@@ -103,14 +103,21 @@
       position: absolute;
       right: 10px;
       bottom: 10px;
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
       font-size: 1rem;
       color: #333;
     }
 
     .name-label strong {
       font-weight: bold;
+    }
+
+    .name-line {
+      width: 1px;
+      height: 100px; /* Intro 옆 선 길이와 동일 */
+      background: black;
     }
 
     .portfolio-box {
@@ -203,7 +210,8 @@
         </p>
 
         <div class="name-label">
-          KIM <strong>JIMIN</strong>
+          <div>KIM <strong>JIMIN</strong></div>
+          <div class="name-line"></div>
         </div>
       </div>
 
