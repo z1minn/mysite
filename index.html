@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3번 포트폴리오 풀스크린</title>
+  <title>3번 포트폴리오 다크모드 - 움직이는 그라데이션</title>
   <style>
     * {
       margin: 0;
@@ -18,24 +18,42 @@
       scroll-behavior: smooth;
       overflow: hidden;
       background: black;
+      transition: background 0.5s, color 0.5s;
     }
     main {
       height: 100%;
       width: 100%;
       scroll-snap-type: y mandatory;
       overflow-y: scroll;
+      position: relative;
     }
+
+    .darkmode-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: inset 10px 0 0 0 black;
+      cursor: pointer;
+      z-index: 50;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .dark-mode .darkmode-btn {
+      background: black;
+      box-shadow: inset 10px 0 0 0 white;
+    }
+
     section {
+      position: relative;
+      z-index: 2;
       height: 100vh;
       width: 100%;
       scroll-snap-align: start;
       display: flex;
-      position: relative;
-    }
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      transition: background 0.5s, color 0.5s;
     }
 
     .intro {
@@ -43,6 +61,19 @@
       background-size: 300% 300%;
       animation: gradientShift 10s ease infinite;
       position: relative;
+      transition: background 0.5s;
+    }
+
+    .dark-mode .intro {
+      background: linear-gradient(135deg, #4a2a87, #a18d3f, #2d5e5f);
+      background-size: 300% 300%;
+      animation: gradientShift 10s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .menu-left {
@@ -64,12 +95,22 @@
     .content-box {
       background: white;
       width: 50%;
+      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding: 40px;
       position: relative;
       overflow: hidden;
+      background-image: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
+      background-size: 20px 20px;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    .content-box > *:not(.name-label) {
+      position: relative;
+      z-index: 2;
+      text-align: left;
     }
 
     .content-box h1 {
@@ -97,6 +138,7 @@
     .content-box p {
       font-size: 1rem;
       line-height: 1.6;
+      max-width: 80%;
     }
 
     .name-label {
@@ -108,6 +150,7 @@
       gap: 10px;
       font-size: 1rem;
       color: #333;
+      z-index: 3;
     }
 
     .name-label strong {
@@ -116,7 +159,7 @@
 
     .name-line {
       width: 1px;
-      height: 100px; /* Intro 옆 선 길이와 동일 */
+      height: 100px;
       background: black;
     }
 
@@ -159,9 +202,10 @@
       align-items: center;
       font-weight: bold;
       font-size: 1rem;
+      color: black;
       z-index: 20;
+      transition: color 0.5s;
     }
-
     .intro-label::after {
       content: "";
       display: block;
@@ -169,29 +213,48 @@
       height: 1px;
       background: black;
       margin-left: 10px;
+      transition: background 0.5s;
     }
-
-    .about {
-      background: #f5f5f5;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .projects {
-      background: #ffffff;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .contact {
-      background: #111111;
+    .dark-mode .intro-label {
       color: white;
+    }
+    .dark-mode .intro-label::after {
+      background: white;
+    }
+
+    .about, .projects, .contact {
       justify-content: center;
       align-items: center;
+    }
+
+    .dark-mode body {
+      background: white;
+      color: black;
+    }
+    .dark-mode .content-box {
+      background: black;
+      color: white;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    }
+    .dark-mode .portfolio-box {
+      background: white;
+      color: black;
+    }
+    .dark-mode .name-label {
+      color: #ddd;
+    }
+    .dark-mode .name-line {
+      background: white;
+    }
+    .dark-mode .dot-nav span {
+      background: white;
     }
   </style>
 </head>
 <body>
+  <!-- 달 모양 버튼 -->
+  <div class="darkmode-btn" id="darkmode-btn"></div>
+
   <main>
     <section class="intro">
       <div class="intro-label">Intro</div>
@@ -237,5 +300,12 @@
       <h2 style="font-size: 3rem; font-weight: bold;">Contact</h2>
     </section>
   </main>
+
+  <script>
+    const darkBtn = document.getElementById('darkmode-btn');
+    darkBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+  </script>
 </body>
 </html>
