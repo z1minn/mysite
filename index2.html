@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kim Jimin Portfolio</title>
 
-  <!-- Noto Sans KR 불러오기 -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts: Noto Sans KR + Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700&family=Poppins:wght@100&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -60,36 +60,84 @@
       transition: background 0.5s, color 0.5s;
     }
 
-    /* 공통 intro/section용 label */
-    .section-label {
-      position: absolute;
-      top: 20px;
-      left: 80px;
-      display: flex;
-      align-items: center;
-      font-weight: bold;
-      font-size: 1rem;
-      color: black;
-      z-index: 20;
-      transition: color 0.5s;
+    .intro {
+      background: linear-gradient(135deg, #9d75eb, #f5d776, #60bfc1);
+      background-size: 300% 300%;
+      animation: gradientShift 10s ease infinite;
+      position: relative;
     }
-    .section-label::after {
-      content: "";
-      display: block;
-      width: 100px;
-      height: 1px;
-      background: black;
-      margin-left: 10px;
-      transition: background 0.5s;
-    }
-    .dark-mode .section-label {
-      color: white;
-    }
-    .dark-mode .section-label::after {
-      background: white;
+    .dark-mode .intro {
+      background: linear-gradient(135deg, #4a2a87, #a18d3f, #2d5e5f);
+      background-size: 300% 300%;
+      animation: gradientShift 10s ease infinite;
     }
 
-    /* 우측 하단 이름 라벨 */
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .menu-left {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      background: #2a1a1f;
+      color: white;
+      padding: 20px;
+      font-family: 'Poppins', sans-serif; /* MENU만 Poppins */
+      font-weight: 100;
+      text-align: center;
+      width: 60px;
+      transition: width 0.5s ease;
+      z-index: 10;
+    }
+    .menu-left:hover {
+      width: 60%;
+    }
+
+    .content-box {
+      background: white;
+      width: 50%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+      background-image: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
+      background-size: 20px 20px;
+      transition: background 0.5s, color 0.5s;
+    }
+    .dark-mode .content-box {
+      background: black;
+      color: white;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    }
+
+    .content-box h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .content-box p {
+      font-size: 1rem;
+      line-height: 1.6;
+      max-width: 80%;
+    }
+
+    .portfolio-box {
+      display: inline-block;
+      background: black;
+      color: white;
+      padding: 0 10px;
+    }
+    .dark-mode .portfolio-box {
+      background: white;
+      color: black;
+    }
+
     .name-label {
       position: absolute;
       right: 10px;
@@ -116,170 +164,131 @@
       background: white;
     }
 
-    /* 인트로 */
-    .intro {
-      background: linear-gradient(135deg, #9d75eb, #f5d776, #60bfc1);
-      background-size: 300% 300%;
-      animation: gradientShift 10s ease infinite;
-      position: relative;
-    }
-    .dark-mode .intro {
-      background: linear-gradient(135deg, #4a2a87, #a18d3f, #2d5e5f);
-    }
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    .menu-left {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      background: #2a1a1f;
-      color: white;
-      padding: 20px;
-      font-weight: 100;
-      text-align: center;
-      width: 60px;
-      transition: width 0.5s ease;
-      z-index: 10;
-    }
-    .menu-left:hover {
-      width: 60%;
-    }
-    .content-box {
-      background: white;
-      width: 50%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 40px;
-      position: relative;
-      overflow: hidden;
-      background-image: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
-      background-size: 20px 20px;
-    }
-    .dark-mode .content-box {
-      background: black;
-      color: white;
-      background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
-    }
-    .content-box h1 {
-      font-size: 3rem;
-      font-weight: 900;
-      margin-bottom: 20px;
-      line-height: 1.2;
-    }
-    .content-box p {
-      font-size: 1rem;
-      line-height: 1.6;
-      max-width: 80%;
-    }
-    .portfolio-box {
-      display: inline-block;
-      background: black;
-      color: white;
-      padding: 0 10px;
-    }
-    .dark-mode .portfolio-box {
-      background: white;
-      color: black;
-    }
     .image-area {
       width: 50%;
       background: url('https://via.placeholder.com/600x800') no-repeat center;
       background-size: cover;
     }
 
-    /* About */
-    .about {
-      background: white;
-      color: black;
-      padding: 50px;
+    .dot-nav {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
       display: flex;
-      align-items: flex-start;
-      position: relative;
+      flex-direction: column;
+      gap: 12px;
     }
-    .dark-mode .about {
+    .dot-nav span {
+      width: 10px;
+      height: 10px;
       background: black;
-      color: white;
-    }
-    .about-left {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-    }
-    .about-left img {
-      width: 300px;
-      height: auto;
-      border-radius: 10px;
-      object-fit: cover;
-    }
-    .about-right {
-      flex: 2;
-      margin-left: 50px;
-    }
-    .about-right h2 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-    .about-right p {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    .skills span {
-      border: 1px solid #333;
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-    }
-    .dark-mode .skills span {
-      border-color: white;
-    }
-    hr {
-      margin: 20px 0;
-      border: none;
-      border-top: 1px solid #ccc;
-    }
-    .dark-mode hr {
-      border-top: 1px solid #555;
-    }
-    .about-section h3 {
-      font-size: 1.2rem;
-      margin-bottom: 5px;
-    }
-    .about-section ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    .about-section li {
-      font-size: 0.95rem;
-      margin-bottom: 5px;
+      border-radius: 50%;
+      cursor: pointer;
     }
 
-    .projects, .contact {
+    .intro-label {
+      position: absolute;
+      top: 20px;
+      left: 80px;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 1rem;
+      color: black;
+      z-index: 20;
+      transition: color 0.5s;
+    }
+    .intro-label::after {
+      content: "";
+      display: block;
+      width: 100px;
+      height: 1px;
+      background: black;
+      margin-left: 10px;
+      transition: background 0.5s;
+    }
+    .dark-mode .intro-label {
+      color: white;
+    }
+    .dark-mode .intro-label::after {
+      background: white;
+    }
+
+    .about, .projects, .contact {
       justify-content: center;
       align-items: center;
       padding: 40px;
     }
+    .about {
+      background: linear-gradient(135deg, #e0c3fc, #8ec5fc);
+      flex-direction: column;
+      text-align: left;
+    }
+    .dark-mode .about {
+      background: linear-gradient(135deg, #4c2c7a, #264b7a);
+    }
+
+    .about h2, .projects h2, .contact h2 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .about p {
+      max-width: 600px;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+    .about .keywords {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .about .keyword {
+      background: rgba(0,0,0,0.1);
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    .dark-mode .about .keyword {
+      background: rgba(255,255,255,0.2);
+    }
+
     .projects {
       background: #111;
+      flex-direction: column;
       color: white;
     }
     .dark-mode .projects {
       background: #eee;
       color: black;
     }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 1000px;
+    }
+    .project-card {
+      background: #333;
+      padding: 20px;
+      border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+    .dark-mode .project-card {
+      background: #ccc;
+    }
+
     .contact {
       background: #fff;
+      flex-direction: column;
       color: black;
       text-align: center;
     }
@@ -297,72 +306,62 @@
 
   <main>
     <section class="intro">
-      <div class="section-label">Intro</div>
+      <div class="intro-label">Intro</div>
+
       <div class="menu-left">
         <div>MENU</div>
       </div>
+
       <div class="content-box">
         <h1>
           KIM<br>JIMIN<br>
           <span class="portfolio-box">PORTFOLIO</span>
         </h1>
         <p>안녕하세요. 미디어콘텐츠학과 <strong>김지민</strong>의 개인 포트폴리오 사이트입니다.</p>
+
+        <div class="name-label">
+          <div>KIM <strong>JIMIN</strong></div>
+          <div class="name-line"></div>
+        </div>
       </div>
+
       <div class="image-area"></div>
-      <div class="name-label">
-        <div>KIM <strong>JIMIN</strong></div>
-        <div class="name-line"></div>
+
+      <div class="dot-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </section>
 
     <section class="about">
-      <div class="section-label">About</div>
-      <div class="about-left">
-        <img src="your-image.jpg" alt="김지민 일러스트">
-      </div>
-      <div class="about-right">
-        <h2>About.</h2>
-        <p>저는 브랜드와 가치를 만드는 것을 좋아하는 사람입니다. 새로운 것을 배우고 도전하는 것을 두려워하지 않으며, 창의적이고 감각적인 디자인을 통해 세상과 소통하고 싶습니다.</p>
-        <div class="skills">
-          <span>HTML</span>
-          <span>CSS</span>
-          <span>JavaScript</span>
-          <span>Illustrator</span>
-          <span>Photoshop</span>
-          <span>Figma</span>
-        </div>
-        <hr>
-        <div class="about-section">
-          <h3>경력</h3>
-          <ul>
-            <li>2025 - 현재: 프리랜서 디자이너</li>
-            <li>2023 - 2025: ABC 디자인 스튜디오 인턴</li>
-          </ul>
-        </div>
-        <div class="about-section">
-          <h3>자격증</h3>
-          <ul>
-            <li>GTQ 1급 (2024)</li>
-            <li>컴퓨터그래픽스운용기능사 (2023)</li>
-          </ul>
-        </div>
-        <div class="about-section">
-          <h3>교육</h3>
-          <ul>
-            <li>웹 개발 캠프 (HTML/CSS/JS) 수료</li>
-            <li>일러스트레이터 마스터 클래스</li>
-          </ul>
-        </div>
-      </div>
-      <div class="name-label">
-        <div>KIM <strong>JIMIN</strong></div>
-        <div class="name-line"></div>
+      <h2>About Me</h2>
+      <p>창의적이고 열정적인 디자이너이자 일러스트레이터로서, 시각적으로 강렬하고 감각적인 작품을 통해 세상과 소통합니다.</p>
+      <div class="keywords">
+        <div class="keyword">디자인</div>
+        <div class="keyword">일러스트</div>
+        <div class="keyword">창작</div>
+        <div class="keyword">브랜딩</div>
       </div>
     </section>
 
     <section class="projects">
       <h2>Projects</h2>
-      <p>여기에 프로젝트 내용을 추가하세요.</p>
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>Project 1</h3>
+          <p>작업 설명 또는 한 줄 요약.</p>
+        </div>
+        <div class="project-card">
+          <h3>Project 2</h3>
+          <p>작업 설명 또는 한 줄 요약.</p>
+        </div>
+        <div class="project-card">
+          <h3>Project 3</h3>
+          <p>작업 설명 또는 한 줄 요약.</p>
+        </div>
+      </div>
     </section>
 
     <section class="contact">
