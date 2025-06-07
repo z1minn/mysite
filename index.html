@@ -18,6 +18,7 @@
       background: black;
       transition: background 0.5s, color 0.5s;
     }
+
     .darkmode-btn {
       position: absolute; top: 20px; right: 20px;
       width: 40px; height: 40px; border-radius: 50%;
@@ -30,16 +31,38 @@
       background: black;
       box-shadow: inset 10px 0 0 0 white;
     }
+
     main {
       height: 100%; width: 100%;
       scroll-snap-type: y mandatory;
-      overflow-y: scroll; position: relative;
+      overflow-y: scroll;
+      position: relative;
     }
+
     section {
       scroll-snap-align: start;
       height: 100vh; width: 100%;
       display: flex;
       transition: background 0.5s, color 0.5s;
+    }
+
+    /* 공통 사이드 메뉴바 */
+    .menu-left {
+      position: fixed;
+      top: 0; left: 0;
+      height: 100vh;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      background: #2a1a1f; color: white;
+      padding: 20px;
+      font-weight: 100;
+      text-align: center;
+      width: 60px;
+      transition: width 0.5s ease;
+      z-index: 10;
+    }
+    .menu-left:hover {
+      width: 60%;
     }
 
     /* Intro Section */
@@ -57,28 +80,16 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-    .menu-left {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      background: #2a1a1f; color: white;
-      padding: 20px;
-      font-weight: 100;
-      text-align: center;
-      width: 60px;
-      transition: width 0.5s ease;
-      z-index: 10;
-    }
-    .menu-left:hover {
-      width: 60%;
-    }
+
     .content-box {
       background: white; color: black;
-      width: 50%; height: 100%;
+      width: calc(50% - 30px); height: 70%;
       display: flex; flex-direction: column;
       justify-content: center;
       padding: 40px;
       position: relative;
-      overflow: hidden;
+      margin-top: auto; margin-bottom: auto;
+      margin-left: 60px;
       background-image: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
       background-size: 20px 20px;
     }
@@ -86,9 +97,36 @@
       background: black; color: white;
       background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
     }
+
+    .intro-label {
+      position: absolute;
+      top: 8px; left: 15px;
+      font-weight: bold;
+      font-size: 1rem;
+      color: black;
+      display: flex; align-items: center;
+      z-index: 20;
+      transition: color 0.5s;
+    }
+    .intro-label::after {
+      content: "";
+      display: block;
+      width: 100px; height: 1px;
+      background: black;
+      margin-left: 10px;
+      transition: background 0.5s;
+    }
+    .dark-mode .intro-label {
+      color: white;
+    }
+    .dark-mode .intro-label::after {
+      background: white;
+    }
+
     .content-box h1 {
       font-size: 3rem; font-weight: 900;
-      margin-bottom: 20px; line-height: 1.2;
+      margin-bottom: 20px;
+      line-height: 1.2;
     }
     .portfolio-box {
       display: inline-block;
@@ -104,6 +142,7 @@
       line-height: 1.6;
       max-width: 80%;
     }
+
     .name-label {
       position: absolute; right: 10px; bottom: 10px;
       display: flex; align-items: flex-end; gap: 10px;
@@ -118,11 +157,13 @@
     .dark-mode .name-line {
       background: white;
     }
+
     .image-area {
       width: 50%;
       background: url('https://via.placeholder.com/600x800') no-repeat center;
       background-size: cover;
     }
+
     .dot-nav {
       position: absolute;
       right: 20px; top: 50%;
@@ -135,24 +176,8 @@
       background: black; border-radius: 50%;
       cursor: pointer;
     }
-    .intro-label {
-      position: absolute; top: 20px; left: 80px;
-      display: flex; align-items: center;
-      font-weight: bold; font-size: 1rem; color: black;
-    }
-    .intro-label::after {
-      content: ""; display: block;
-      width: 100px; height: 1px;
-      background: black; margin-left: 10px;
-    }
-    .dark-mode .intro-label {
-      color: white;
-    }
-    .dark-mode .intro-label::after {
-      background: white;
-    }
 
-    /* About Section */
+    /* About */
     .about {
       display: flex;
       justify-content: center;
@@ -175,13 +200,15 @@
       height: 500px;
       border-radius: 10px;
       object-fit: cover;
-      margin-top: 150px;  /* 위쪽 여백 조절 */
+      margin-top: 150px;
     }
     .about-right {
       flex: 2;
       margin-left: 50px;
       margin-top: 220px;
     }
+
+    /* Skills & Details */
     .about-right h2 {
       font-size: 2.5rem;
       font-weight: 700;
@@ -227,34 +254,6 @@
       font-size: 0.95rem;
       margin-bottom: 5px;
     }
-    .intro-label {
-  position: absolute;
-  top: 20px;
-  left: 80px;
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  font-size: 1rem;
-  color: black;
-  z-index: 20;
-  transition: color 0.5s;
-}
-.intro-label::after {
-  content: "";
-  display: block;
-  width: 100px;
-  height: 1px;
-  background: black;
-  margin-left: 10px;
-  transition: background 0.5s;
-}
-.dark-mode .intro-label {
-  color: white;
-}
-.dark-mode .intro-label::after {
-  background: white;
-}
-
 
     /* Projects */
     .projects {
@@ -282,7 +281,6 @@
       background: #000;
       color: white;
     }
-
     .contact p {
       margin: 5px 0;
     }
@@ -291,13 +289,13 @@
 </head>
 <body>
   <div class="darkmode-btn" id="darkmode-btn"></div>
+  <div class="menu-left"><div>MENU</div></div>
 
   <main>
     <!-- Intro -->
     <section class="intro">
-      <div class="intro-label">Intro</div>
-      <div class="menu-left"><div>MENU</div></div>
       <div class="content-box">
+        <div class="intro-label">Intro</div>
         <h1>KIM<br>JIMIN<br><span class="portfolio-box">PORTFOLIO</span></h1>
         <p>안녕하세요. 미디어콘텐츠학과 <strong>김지민</strong>의 개인 포트폴리오 사이트입니다.</p>
         <div class="name-label"><div>KIM <strong>JIMIN</strong></div><div class="name-line"></div></div>
@@ -320,9 +318,7 @@
         </div>
         <hr>
         <div class="about-section"><h3>경력</h3>
-          <ul>
-            <li>2021 - 현재: 경성대학교 미디어콘텐츠학과 재학</li>
-          </ul>
+          <ul><li>2021 - 현재: 경성대학교 미디어콘텐츠학과 재학</li></ul>
         </div>
         <div class="about-section"><h3>자격증</h3>
           <ul>
@@ -331,12 +327,9 @@
           </ul>
         </div>
         <div class="about-section"><h3>기타 항목</h3>
-          <ul>
-            <li>솔직히 딱히 적을게 없습니다 앞으로 열심히 채워나가겠습니다.</li>
-          </ul>
+          <ul><li>솔직히 딱히 적을게 없습니다 앞으로 열심히 채워나가겠습니다.</li></ul>
         </div>
       </div>
-      
     </section>
 
     <!-- Projects -->
